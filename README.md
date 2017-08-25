@@ -41,5 +41,5 @@ removeData (data)    // removes an element from the data array
 ```
 
 ### examples
- - [example/index.js](https://github.com/tomasklapka/rdf-reasoner-eyeclient/blob/master/src/example/index.js)
- - [test/index.js](https://github.com/tomasklapka/rdf-reasoner-eyeclient/blob/master/src/test/index.js)
+ - [example/index.js](https://github.com/tomasklapka/rdf-reasoner-eyeclient/blob/master/example/index.js)
+ - [test/index.js](https://github.com/tomasklapka/rdf-reasoner-eyeclient/blob/master/test/test.js)
