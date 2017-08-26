@@ -24,7 +24,7 @@ const expectedString =
 
 nockInit(eyeServerUrl)
 
-describe('simplerdf-context-preprocessor', () => {
+describe('rdf-reasoner-eyeclient', () => {
   it('add data, import and then reason', (done) => {
     const eyeReasoner = new ReasonerEyeClient({ url: eyeServerUrl, autoinfere: false })
     debug('fact: ' + fact.toString())

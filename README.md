@@ -1,10 +1,10 @@
 # rdf reasoner EyeClient
 
-This is a client for an [EyeServer](https://github.com/RubenVerborgh/EyeServer) with [RDFJS specification Store](http://rdf.js.org/#store-interface) interface.
+This is an [EyeServer](https://github.com/RubenVerborgh/EyeServer) client with [RDFJS specification Store interface](http://rdf.js.org/#store-interface) (extends [rdf-store-dataset](https://github.com/rdf-ext/rdf-store-dataset)).
 
-You need an [EyeServer](https://github.com/RubenVerborgh/EyeServer) running ([docker](https://hub.docker.com/r/bdevloed/eyeserver/)).
+You need an [EyeServer](https://github.com/RubenVerborgh/EyeServer) instance running (available as a [docker image](https://hub.docker.com/r/bdevloed/eyeserver/)).
 
-For more detailed information about the Eye Reasoner visit http://reasoning.restdesc.org/
+For more detailed information about the EYE reasoner visit http://reasoning.restdesc.org/
 
 ### usage
 
@@ -23,13 +23,15 @@ const reasoner = new ReasonerEyeClient({
 })
 ```
 
-Use `import(stream)` to load data into a reasoner and use `match(subject, predicate, object)` to get filtered stream of inferred data.
+Use `reasoner.import(stream)` to load data into the reasoner and use `reasoner.match(subject, predicate, object)` to get filtered stream of inferred data.
 
-Methods doing changes fire reasoning if `autoinfere` option is `true` (it's `true` by default).
+Data manipulation, adding and importing fires the reasoning process if `autoinfere` option is `true` (it's `true` by default).
 
-Otherwise use `reason()` to fire reasoning event on request.
+Use `reasoner.reason()` to fire reasoning event on request.
 
-You can access `reasoner.inferred` dataset directly if you want to quickly access the inferred data.
+You can access `reasoner.inferred` [Dataset](https://github.com/rdf-ext/rdf-dataset-simple) with sync interface if you don't want to get the dataset streamed by `reasoner.match`
+
+This module contains an abstract class [Reasoner](https://github.com/tomasklapka/rdf-reasoner-eyeclient/blob/master/lib/reasoner.js) which can be used to extend with another reasoner backend. It is enough to implement the reason() method taking data from this.dataset, inferring them and putting the result into this.inferred.
 
 ### managing additional reasoning data
 
